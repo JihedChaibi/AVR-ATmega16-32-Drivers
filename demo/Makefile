@@ -1,5 +1,5 @@
 MCU=atmega16
-F_CPU=8000000
+F_CPU=16000000
 CC=avr-gcc
 
 CFLAGS= -std=c99 -Wall -g -Os -mmcu=$(MCU) -D F_CPU=$(F_CPU)
@@ -25,6 +25,10 @@ COMPILE:
 HEX:
 	avr-objcopy -O ihex $(TARGET) $(TARGET).hex
 	@echo "HEX FILE WAS GENERATED SECCESFULLY...."
+
+FLASH:
+	avrdude -p $(MCU) -c usbasp -U flash:w:$(TARGET).hex:i -F -P usb
+
 
 clean:
 	@echo "cleaning......."
