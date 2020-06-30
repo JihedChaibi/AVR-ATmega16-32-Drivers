@@ -20,6 +20,11 @@ void SPI_Master_Init();
 void SPI_Slave_Init();
 
 /* Send 1 Character (8bits) */
-uint8_t SPI_Send_Char(uint8_t data);
+void SPI_Master_Transmit(uint8_t data);
+
+/* Recieve data as slave*/
+char SPI_Slave_Receive(void);
+
+
 
 #endif
