@@ -28,6 +28,6 @@ HEX:
 
 clean:
 	@echo "cleaning......."
-	@rm -rf $(TARGET)
+	@rm -rf $(TARGET) $(TARGET).hex
 
 
