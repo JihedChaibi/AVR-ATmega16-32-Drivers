@@ -4,7 +4,8 @@
         {
             "name": "AVR-GCC Configs",
             "includePath": [
-                "${workspaceFolder}/**"
+                "${workspaceFolder}/**",
+                "C:\\MinGW\\avr-gcc-8.2.0-x86-mingw\\avr\\include"
             ],
             "defines": [
                 "_DEBUG",
