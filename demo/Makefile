@@ -23,7 +23,7 @@ COMPILE:
 # @avr-size -C $(TARGET)
 
 HEX:
-	avr-objcopy -O ihex $(TARGET) $(TARGET).hex
+	avr-objcopy -j .text -j .data -O ihex $(TARGET) $(TARGET).hex
 	@echo "HEX FILE WAS GENERATED SECCESFULLY...."
 
 FLASH:
