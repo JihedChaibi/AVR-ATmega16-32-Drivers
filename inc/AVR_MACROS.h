@@ -11,6 +11,11 @@
 #define AVR_MACROS_H_
 
 
+#ifndef __AVR_ATmega16__
+#define __AVR_ATmega16__
+#endif
+
+
 #include <stdint.h>
 
 #ifndef F_CPU
