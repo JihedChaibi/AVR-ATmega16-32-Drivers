@@ -1,6 +1,10 @@
 /*
+*
 *  File:          AVR_MACROS.h
+*  Author:        Jihed Chaibi
+*  Date:          30/06/2020
 *  Description:   AVR Librariy includes & Bit Manipulation Macros Definition
+*
 */
 
 #ifndef AVR_MACROS_H_
@@ -12,8 +16,6 @@
 #define F_CPU 8000000UL
 #include <util/delay.h>
 #include <avr/interrupt.h>
-
-
 
 
 
