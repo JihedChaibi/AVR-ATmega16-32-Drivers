@@ -1,8 +1,12 @@
 MCU=atmega16
-F_CPU=16000000
+F_CPU=8000000
 CC=avr-gcc
 
-CFLAGS= -std=c99 -Wall -g -Os -mmcu=$(MCU) -D F_CPU=$(F_CPU)
+INCLUDES_PATH = ../inc/
+BUILDS_PATH   = ../src/*.c
+
+CFLAGS= -std=c99 -Wall -g -Os -mmcu=$(MCU) -D F_CPU=$(F_CPU) -I $(INCLUDES_PATH)
+
 
 SRC=Test_Blink.c
 TARGET=Test_Blink
@@ -15,8 +19,9 @@ TARGET=Test_Blink
 all: COMPILE HEX
 
 COMPILE:
-	$(CC) $(CFLAGS) $(SRC) -o $(TARGET)
+	$(CC) $(CFLAGS) $(SRC) $(BUILDS_PATH) -o $(TARGET)
 	@echo "FILE COMPILED SECCESFULLY...."
+	
 
 # For more details (memory regions etc.) uncomment these two lines
 # @echo "DETAILS:"
