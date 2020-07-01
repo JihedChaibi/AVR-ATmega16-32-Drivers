@@ -19,16 +19,17 @@ TARGET=Test_Blink
 all: COMPILE HEX
 
 COMPILE:
-	$(CC) $(CFLAGS) $(SRC) $(BUILDS_PATH) -o $(TARGET)
+	$(CC) $(CFLAGS) $(SRC) $(BUILDS_PATH) -o $(TARGET).elf
 	@echo "FILE COMPILED SECCESFULLY...."
 	
-# For more details (memory regions etc.) uncomment these two lines
-# @echo "DETAILS:"
-# @avr-size -C $(TARGET)
 
 HEX:
-	avr-objcopy -j .text -j .data -O ihex $(TARGET) $(TARGET).hex
+	avr-objcopy -j .text -j .data -O ihex $(TARGET).elf $(TARGET).hex
 	@echo "HEX FILE WAS GENERATED SECCESFULLY...."
+
+	#For more details (memory regions etc.) uncomment these two lines
+	echo "DETAILS:"
+	@avr-size --format=avr --mcu=$(MCU) $(TARGET).elf
 
 FLASH:
 	avrdude -p $(MCU) -c usbasp -U flash:w:$(TARGET).hex:i -F -P usb
@@ -36,6 +37,6 @@ FLASH:
 
 clean:
 	@echo "cleaning......."
-	@rm -rf $(TARGET) $(TARGET).hex
+	@rm  $(TARGET).elf $(TARGET).hex
 
 
