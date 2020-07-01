@@ -22,7 +22,6 @@ COMPILE:
 	$(CC) $(CFLAGS) $(SRC) $(BUILDS_PATH) -o $(TARGET)
 	@echo "FILE COMPILED SECCESFULLY...."
 	
-
 # For more details (memory regions etc.) uncomment these two lines
 # @echo "DETAILS:"
 # @avr-size -C $(TARGET)
