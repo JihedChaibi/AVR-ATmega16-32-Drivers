@@ -11,7 +11,7 @@
 #include "USART.h"
 
 
-void USART_init(uint32_t BaudRate)
+void USART_Init(uint32_t BaudRate)
 {
 
     /* Set baud rate */

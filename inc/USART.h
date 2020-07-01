@@ -14,7 +14,7 @@
 #include "AVR_MACROS.h"
 
 /* Init The USART */
-void USART_init(uint32_t);
+void USART_Init(uint32_t BaudRate);
 
 /* Send one character */
 void USART_Write(uint8_t data);
