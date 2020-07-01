@@ -28,4 +28,10 @@ uint8_t USART_Read(void);
 /* Is USART Available? */
 uint8_t USART_available(void);
 
+/* Flush USART Data */
+void USART_Flush(void);
+
+/* Send USART New Line */
+void USART_NewLine(void);
+
 #endif
