@@ -18,33 +18,37 @@ DDRA=0xFF;
 DDRB=0xFF;
 DDRC=0x00;
 
-USART_Init(51);
+USART_Init(9600);
+USART_Write_String("Hello User! \r\n");
+USART_Write_String("Test_Blink Demo.. \r\n");
 
-while (1)
-{
-
-
-while ((PINC & (1<<PC2)))
+	while (1)
 	{
-		PORTA=0xff;
-		PORTB=0x00;
 
-		USART_Write('y');
+	_delay_ms(2000);
 
-		_delay_ms(1000);
+	if ((PINC & (1<<PC2)))
+		{
+			PORTA=0xFF;
+			PORTB=0x00;
 
-		PORTA=0x00;
-		PORTB=0xff;
+			USART_Write('A');
+			USART_NewLine();
 
-		_delay_ms(1000);
+		}
+
+	else if (!(PINC & (1<<PC2)))
+		{
+			
+			PORTA=0x00;
+			PORTB=0xFF;
+		
+			USART_Write(66);
+			USART_NewLine();
+		}
+
 
 	}
-
-	if (!(PINC & (1<<PC2))) 		USART_Write('n');
-
-
-
-}
 
 return 0;
 }
