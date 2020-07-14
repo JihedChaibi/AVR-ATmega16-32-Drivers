@@ -22,6 +22,7 @@ USART_Init(9600);
 USART_Write_String("Hello User! \r\n");
 USART_Write_String("Test_Blink Demo.. \r\n");
 
+
 	while (1)
 	{
 
@@ -32,7 +33,7 @@ USART_Write_String("Test_Blink Demo.. \r\n");
 			PORTA=0xFF;
 			PORTB=0x00;
 
-			USART_Write('A');
+			USART_Write(167);
 			USART_NewLine();
 
 		}
