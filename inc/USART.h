@@ -20,7 +20,7 @@ void USART_Init(uint32_t BaudRate);
 void USART_Write(uint8_t data);
 
 /* Send a string */
-void USART_Write_String(uint8_t* data);
+void USART_Write_String(const char* data);
 
 /* Recieve one character */
 uint8_t USART_Read(void);

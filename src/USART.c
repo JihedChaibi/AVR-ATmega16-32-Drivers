@@ -47,7 +47,7 @@ void USART_Write(unsigned char data)
 
 }
 
-void USART_Write_String(unsigned char* data)
+void USART_Write_String(const char* data)
 {
     for(uint8_t i = 0; data[i] != '\0'; i++)
 	USART_Write(data[i]);
