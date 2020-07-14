@@ -9,23 +9,34 @@
 
 #include "I2C.h"
 
+// I2C Clock Prescaler, must be: 1, 4, 16 or 64
 #define I2C_PRESCALER 1
-#define F_SCL 4000000
-#define TWBR_Value (((F_CPU/F_SCL)-16)/(2*I2C_PRESCALER))
 
-void    I2C_master_init(void)
+#define F_SCL 4000000
+
+
+void I2C_master_init(void)
 {
 
-TWBR = (uint8_t)TWBR_Value;
+    TWBR = (uint8_t)((F_CPU/F_SCL)-16)/(2*I2C_PRESCALER);
 
 }
 
 
-void    I2C_start(void)
+void I2C_start(uint8_t address)
 {
 
-TWCR = 0;
-TWCR |= ((1 << TWEN) | (1 << TWSTA) | (1 << TWINT));   
+    TWCR |= ((1 << TWEN) | (1 << TWSTA) | (1 << TWINT));   
+
+    // Wait until transmission completed
+	while(!(TWCR & (1<<TWINT)));
+
+    // Transmit device address
+	TWDR = address;
+	TWCR = (1<<TWINT) | (1<<TWEN);
+
+	// Wail until transmission completed and ACK/NACK has been received
+	while(!(TWCR & (1<<TWINT)));
 
 }
 
