@@ -40,9 +40,26 @@ void I2C_start(uint8_t address)
 
 }
 
+void    I2C_stop(void)
+{    
+	TWCR = (1<<TWINT) | (1<<TWEN) | (1<<TWSTO);
+	while(TWCR & (1<<TWSTO));
+}
 
-void    I2C_write(uint8_t data);
+
+void    I2C_write(uint8_t data)
+{
+
+    	// Send data to the previously addressed device
+	TWDR = data;
+	TWCR = (1<<TWINT) | (1<<TWEN);
+
+	// Wait until transmission completed
+	while(!(TWCR & (1<<TWINT)));
+
+}
+
+
 uint8_t I2C_read(void);
-void    I2C_stop(void);
 uint8_t I2C_slave_available(void);
 void    I2C_slave_init();

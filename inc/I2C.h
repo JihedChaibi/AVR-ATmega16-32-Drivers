@@ -14,9 +14,9 @@
 
 void    I2C_master_init(void);
 void    I2C_start(uint8_t address);
+void    I2C_stop(void);
 void    I2C_write(uint8_t data);
 uint8_t I2C_read(void);
-void    I2C_stop(void);
 uint8_t I2C_slave_available(void);
 void    I2C_slave_init();
 
