@@ -50,7 +50,7 @@ void    I2C_stop(void)
 void    I2C_write(uint8_t data)
 {
 
-    	// Send data to the previously addressed device
+    // Send data to the previously addressed device
 	TWDR = data;
 	TWCR = (1<<TWINT) | (1<<TWEN);
 
@@ -60,6 +60,15 @@ void    I2C_write(uint8_t data)
 }
 
 
-uint8_t I2C_read(void);
+
+uint8_t I2C_read(void)
+{
+	// Start TWI module and acknowledge data after reception
+	TWCR = (1<<TWINT) | (1<<TWEN) | (1<<TWEA); 
+	while( !(TWCR & (1<<TWINT)) );
+	return TWDR;
+}
+
+
 uint8_t I2C_slave_available(void);
 void    I2C_slave_init();
