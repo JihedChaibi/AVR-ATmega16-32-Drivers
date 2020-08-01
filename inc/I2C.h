@@ -12,6 +12,7 @@
 
 #include "AVR_MACROS.h"
 
+
 void    I2C_master_init(void);
 void    I2C_start(uint8_t address);
 void    I2C_stop(void);

@@ -11,7 +11,6 @@
 
 // I2C Clock Prescaler, must be: 1, 4, 16 or 64
 #define I2C_PRESCALER 1
-
 #define F_SCL 4000000
 
 
@@ -40,14 +39,14 @@ void I2C_start(uint8_t address)
 
 }
 
-void    I2C_stop(void)
+void I2C_stop(void)
 {    
 	TWCR = (1<<TWINT) | (1<<TWEN) | (1<<TWSTO);
 	while(TWCR & (1<<TWSTO));
 }
 
 
-void    I2C_write(uint8_t data)
+void I2C_write(uint8_t data)
 {
 
     // Send data to the previously addressed device
